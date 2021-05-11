@@ -3,14 +3,14 @@
         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>hu.unideb.inf</groupId>
-    <artifactId>homework-template-project</artifactId>
+    <artifactId>Inverse-dots</artifactId>
     <version>1.0</version>
     <packaging>jar</packaging>
     <description></description>
     <developers>
         <developer>
-            <name></name>
-            <email></email>
+            <name>Balázs Pintér</name>
+            <email>pbalazs101\mailbox.unideb.hu</email>
             <organization>Faculty of Informatics, University of Debrecen</organization>
             <organizationUrl>https://inf.unideb.hu/</organizationUrl>
         </developer>
@@ -22,7 +22,9 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.build.outputEncoding>UTF-8</project.build.outputEncoding>
         <maven.compiler.release>16</maven.compiler.release>
+        <!-->
         <exec.mainClass>remove.me.RemoveThisClass</exec.mainClass>
+        <!-->
         <javafx.version>16</javafx.version>
         <junit.jupiter.version>5.7.1</junit.jupiter.version>
         <jacoco.version>0.8.7</jacoco.version>
