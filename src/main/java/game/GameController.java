@@ -49,6 +49,7 @@ public class GameController {
         createOpponentDot();
         setSelectablePositions();
         showSelectablePositions();
+        wallBuilder();
     }
 
     private void createBoard() {
@@ -107,7 +108,7 @@ public class GameController {
             }
             case SELECT_TO -> {
                 if (selectablePositions.contains(position)) {
-                    var dotNumber = model.getDotNumber(selected).getAsInt();
+                    var dotNumber = model.getDotNumber(selected).getAsInt(); 
                     var direction = PlayerDirection.of(position.row() - selected.row(), position.col() - selected.col());
                     Logger.debug("Moving dot {} {}", dotNumber, direction);
                     model.move(dotNumber, direction);
@@ -187,6 +188,64 @@ public class GameController {
         StackPane newSquare = getSquare(newPosition);
         newSquare.getChildren().addAll(oldSquare.getChildren());
         oldSquare.getChildren().clear();
+    }
+
+
+    private void wallBuilder() {
+        showWall13(); //OK
+        showWall22();
+        showWall31();
+        showWall34(); //OK
+        showWall43();
+        showWall53(); //OK
+        showWall56(); //OK
+        showWall60();
+        showWall63(); //OK
+    }
+
+    private void showWall13() {
+            var square = getSquare(new Position(1,3));
+            square.getStyleClass().add("wall13");
+    }
+
+    private void showWall22() {
+        var square = getSquare(new Position(2,2));
+        square.getStyleClass().add("wall22");
+    }
+
+    private void showWall31() {
+        var square = getSquare(new Position(3,1));
+        square.getStyleClass().add("wall31");
+    }
+
+    private void showWall34() {
+        var square = getSquare(new Position(3,4));
+        square.getStyleClass().add("wall34");
+    }
+
+    private void showWall43() {
+        var square = getSquare(new Position(4,3));
+        square.getStyleClass().add("wall43");
+    }
+
+    private void showWall53() {
+        var square = getSquare(new Position(5,3));
+        square.getStyleClass().add("wall53");
+    }
+
+    private void showWall56() {
+        var square = getSquare(new Position(5,6));
+        square.getStyleClass().add("wall56");
+    }
+
+    private void showWall60() {
+        var square = getSquare(new Position(6,0));
+        square.getStyleClass().add("wall60");
+    }
+
+    private void showWall63() {
+        var square = getSquare(new Position(6,3));
+        square.getStyleClass().add("wall63");
     }
 
 }
