@@ -44,9 +44,8 @@ public class Dot {
             System.out.printf("%s -> %s\n", oldPosition.toString(), newPosition.toString());
         });
         System.out.println(dot);
-        //dot.moveTo(PlayerDirection.UP_LEFT);
-        dot.moveTo(PlayerDirection.DOWN_RIGHT);
-        dot.moveTo(PlayerDirection.DOWN_LEFT);
+        dot.moveTo(PlayerDirection.DOWN);
+        dot.moveTo(PlayerDirection.LEFT);
         System.out.println(dot);
     }
 

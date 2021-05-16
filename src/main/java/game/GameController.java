@@ -212,6 +212,7 @@ public class GameController {
         showWall60();
         showWall63(); //OK
     }
+    
 
     private void showWall13() {
             var square = getSquare(new Position(1,3));
