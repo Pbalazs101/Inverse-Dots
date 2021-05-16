@@ -12,8 +12,8 @@ public class GameModel {
 
 
     public GameModel() {
-        this(new Dot(DotType.PLAYER, new Position(0, 0)),
-                new Dot(DotType.OPPONENT, new Position(0, 5)));
+        this(new Dot(DotType.PLAYER, new Position(0, 4)),
+                new Dot(DotType.OPPONENT, new Position(6, 2)));
     }
 
     public GameModel(Dot... dots) {
