@@ -1,13 +1,59 @@
 .square {
-    -fx-border-style: solid solid solid solid;
+    -fx-background-color: grey;
 }
 
 .selected {
     -fx-background-color: silver;
 }
 
+
 .selectable {
-    -fx-border-width: 5;
+    -fx-border-color: red;
 }
 
 
+.wall13 {
+    -fx-border-width: 5;
+    /*-fx-border-insets: -3;*/
+    -fx-border-style: solid none solid solid;
+}
+
+.wall22 {
+    -fx-border-width: 5;
+    -fx-border-style: solid solid solid solid;
+}
+
+.wall31 {
+    -fx-border-width: 5;
+    -fx-border-style: none none solid none;
+}
+
+.wall34 {
+    -fx-border-width: 5;
+    -fx-border-style: solid none solid solid;
+}
+
+.wall43 {
+    -fx-border-width: 5;
+    -fx-border-style: none none solid solid;
+}
+
+.wall53 {
+    -fx-border-width: 5;
+    -fx-border-style: solid none solid solid;
+}
+
+.wall56 {
+    -fx-border-width: 5;
+    -fx-border-style: solid none none solid;
+}
+
+.wall60 {
+    -fx-border-width: 5;
+    -fx-border-style: none solid none none;
+}
+
+.wall63 {
+    -fx-border-width: 5;
+    -fx-border-style: solid none none solid;
+}
