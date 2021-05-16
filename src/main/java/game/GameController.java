@@ -189,12 +189,15 @@ public class GameController {
         throw new AssertionError();
     }
 
-    private void dotPositionChange(ObservableValue<? extends Position> observable, Position oldPosition, Position newPosition) { //Ez kerül meghívásra, ha megváltozik valamelyik pozíciója
+    private void dotPositionChange(ObservableValue<? extends Position> observable, Position oldPosition, Position newPosition) {
         Logger.debug("Move: {} -> {}", oldPosition, newPosition);
         StackPane oldSquare = getSquare(oldPosition);
         StackPane newSquare = getSquare(newPosition);
         newSquare.getChildren().addAll(oldSquare.getChildren());
         oldSquare.getChildren().clear();
+        if(model.getDotPosition(0).equals(model.getDotPosition(1))) {
+            Logger.info("Congratulations, you won!");
+        }
     }
 
 
