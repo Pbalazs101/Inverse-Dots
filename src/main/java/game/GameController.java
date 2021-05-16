@@ -109,9 +109,16 @@ public class GameController {
             case SELECT_TO -> {
                 if (selectablePositions.contains(position)) {
                     var direction = PlayerDirection.of(position.row() - selected.row(), position.col() - selected.col());
-                    Logger.debug("Moving dot {} {}", 0, direction);
+                    Logger.debug("Moving player dot {}",  direction);
+
+                    var inverseDirectionRowChange = direction.getRowChange()*-1;
+                    var inverseDirectionColChange = direction.getColChange()*-1;
+
+                    var inverseDirection = PlayerDirection.of(inverseDirectionRowChange,inverseDirectionColChange);
+
                     model.move(0, direction);
-                    model.move(1, direction);
+                    model.move(1, inverseDirection);
+
                     deselectSelectedPosition();
                     alterSelectionPhase();
                 }
