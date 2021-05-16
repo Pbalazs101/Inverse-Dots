@@ -45,7 +45,8 @@ public class GameController {
     @FXML
     private void initialize() {
         createBoard();
-        createDots();
+        createPlayerDot();
+        createOpponentDot();
         setSelectablePositions();
         showSelectablePositions();
     }
@@ -66,12 +67,18 @@ public class GameController {
         return square;
     }
 
-    private void createDots() {
-        for (int i = 0; i < model.getDotCount(); i++) {
-            model.positionProperty(i).addListener(this::dotPositionChange);
+
+    private void createPlayerDot() {
+            model.positionProperty(0).addListener(this::dotPositionChange);
             var dot = createDot(Color.rgb(255,0,0));
-            getSquare(model.getDotPosition(i)).getChildren().add(dot);
-        }
+            getSquare(model.getDotPosition(0)).getChildren().add(dot);
+
+    }
+
+    private void createOpponentDot() {
+            model.positionProperty(1).addListener(this::dotPositionChange);
+            var dot = createDot(Color.rgb(0,0,255));
+            getSquare(model.getDotPosition(1)).getChildren().add(dot);
     }
 
     private Circle createDot(Color color) {
