@@ -76,7 +76,7 @@ public class GameController {
     }
 
     /**
-     * Adding event listener to square objects and initializing css classes.
+     * Creating squares as stackpane and adding event listener to square objects and initializing css classes.
      * @return
      */
     private StackPane createSquare() {
@@ -131,7 +131,7 @@ public class GameController {
     }
 
     /**
-     * Handles clicks when position is about the get changed for both types of dots.
+     * Handles clicks when position is about the get changed or we are about selecting dots.
      * @param position
      */
     private void handleClickOnSquare(Position position) {
@@ -190,17 +190,25 @@ public class GameController {
         square.getStyleClass().add("selected");
     }
 
-
+    /**
+     *Sets "selected" to null value.
+     */
     private void deselectSelectedPosition() {
         hideSelectedPosition();
         selected = null;
     }
 
+    /**
+     * Removes css class in order to hide no longer selected positions.
+     */
     private void hideSelectedPosition() {
         var square = getSquare(selected);
         square.getStyleClass().remove("selected");
     }
 
+    /**
+     * Sets the selectable positions for choosing dot or moving a selected dot.
+     */
     private void setSelectablePositions() {
         selectablePositions.clear();
         switch (selectionPhase) {
@@ -213,6 +221,9 @@ public class GameController {
         }
     }
 
+    /**
+     * Creating css classes for selectable positions.
+     */
     private void showSelectablePositions() {
         for (var selectablePosition : selectablePositions) {
             var square = getSquare(selectablePosition);
@@ -220,6 +231,9 @@ public class GameController {
         }
     }
 
+    /**
+     * Removes css class in order to hide no longer selectable positions.
+     */
     private void hideSelectablePositions() {
         for (var selectablePosition : selectablePositions) {
             var square = getSquare(selectablePosition);
@@ -227,6 +241,11 @@ public class GameController {
         }
     }
 
+    /**
+     * Returns the square on the given position if a dot is present on it.
+     * @param position
+     * @return
+     */
     private StackPane getSquare(Position position) {
         for (var child : board.getChildren()) {
             if (GridPane.getRowIndex(child) == position.row() && GridPane.getColumnIndex(child) == position.col()) {
@@ -236,6 +255,12 @@ public class GameController {
         throw new AssertionError();
     }
 
+    /**
+     * Removes children (dot) from and old position object after assigning them to a new one.
+     * @param observable
+     * @param oldPosition
+     * @param newPosition
+     */
     private void dotPositionChange(ObservableValue<? extends Position> observable, Position oldPosition, Position newPosition) {
         Logger.debug("Move: {} -> {}", oldPosition, newPosition);
         StackPane oldSquare = getSquare(oldPosition);
@@ -248,6 +273,9 @@ public class GameController {
     }
 
 
+    /**
+     * Calls each method to display walls according to figure number 39.
+     */
     private void wallBuilder() {
         showWall13(); //OK
         showWall22();
@@ -259,8 +287,10 @@ public class GameController {
         showWall60();
         showWall63(); //OK
     }
-    
 
+    /**
+     * Creates css class for every square that contains walls.
+     */
     private void showWall13() {
             var square = getSquare(new Position(1,3));
             square.getStyleClass().add("wall13");
