@@ -15,14 +15,22 @@ public enum PlayerDirection implements Direction {
         this.colChange = colChange;
     }
 
+    @Override
     public int getRowChange() {
         return rowChange;
     }
 
+    @Override
     public int getColChange() {
         return colChange;
     }
 
+    /**
+     * Returns the defined name of direction by recieving col and row change.
+     * @param rowChange
+     * @param colChange
+     * @return
+     */
     public static PlayerDirection of(int rowChange, int colChange) {
         for (var direction : values()) {
             if (direction.rowChange == rowChange && direction.colChange == colChange) {

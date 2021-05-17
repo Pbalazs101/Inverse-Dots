@@ -19,10 +19,17 @@ import game.model.Position;
 
 public class GameController {
 
+    /**
+     * Enum class for defining selection phase
+     */
     private enum SelectionPhase {
         SELECT_FROM,
         SELECT_TO;
 
+        /**
+         * Alternating between dot and destination selection.
+         * @return
+         */
         public SelectionPhase alter() {
             return switch (this) {
                 case SELECT_FROM -> SELECT_TO;
@@ -42,6 +49,10 @@ public class GameController {
     @FXML
     private GridPane board;
 
+
+    /**
+     * Creating the model based on excercise 2.34.
+     */
     @FXML
     private void initialize() {
         createBoard();
@@ -52,6 +63,9 @@ public class GameController {
         wallBuilder();
     }
 
+    /**
+     * Setting up the board and creating squares.
+     */
     private void createBoard() {
         for (int i = 0; i < board.getRowCount(); i++) {
             for (int j = 0; j < board.getColumnCount(); j++) {
@@ -61,6 +75,10 @@ public class GameController {
         }
     }
 
+    /**
+     * Adding event listener to square objects and initializing css classes.
+     * @return
+     */
     private StackPane createSquare() {
         var square = new StackPane();
         square.getStyleClass().add("square");
@@ -68,7 +86,9 @@ public class GameController {
         return square;
     }
 
-
+    /**
+     * Creating PLAYER dot with attributes.
+     */
     private void createPlayerDot() {
             model.positionProperty(0).addListener(this::dotPositionChange);
             var dot = createDot(Color.rgb(255,0,0));
@@ -76,18 +96,30 @@ public class GameController {
 
     }
 
+    /**
+     * Creating OPPONENT dot with attributes.
+     */
     private void createOpponentDot() {
             model.positionProperty(1).addListener(this::dotPositionChange);
             var dot = createDot(Color.rgb(0,0,255));
             getSquare(model.getDotPosition(1)).getChildren().add(dot);
     }
 
+    /**
+     * Visually showing dot on board with set size.
+     * @param color
+     * @return
+     */
     private Circle createDot(Color color) {
         var dot = new Circle(25); // Size of dot
         dot.setFill(color);
         return dot;
     }
 
+    /**
+     * Driver code for mouse click event listener.
+     * @param event
+     */
     @FXML
     private void handleMouseClick(MouseEvent event) {
         var square = (StackPane) event.getSource();
@@ -98,6 +130,10 @@ public class GameController {
         handleClickOnSquare(position);
     }
 
+    /**
+     * Handles clicks when position is about the get changed for both types of dots.
+     * @param position
+     */
     private void handleClickOnSquare(Position position) {
         switch (selectionPhase) {
             case SELECT_FROM -> {
@@ -121,11 +157,15 @@ public class GameController {
 
                     deselectSelectedPosition();
                     alterSelectionPhase();
+
                 }
             }
         }
     }
 
+    /**
+     * Function for alternating between the two possible selection phases and taking care of visual properties.
+     */
     private void alterSelectionPhase() {
         selectionPhase = selectionPhase.alter();
         hideSelectablePositions();
@@ -133,15 +173,23 @@ public class GameController {
         showSelectablePositions();
     }
 
+    /**
+     * Recieves a position and sets it as the selected one.
+     * @param position
+     */
     private void selectPosition(Position position) {
         selected = position;
         showSelectedPosition();
     }
 
+    /**
+     * Creating css classes for selected positions.
+     */
     private void showSelectedPosition() {
         var square = getSquare(selected);
         square.getStyleClass().add("selected");
     }
+
 
     private void deselectSelectedPosition() {
         hideSelectedPosition();
@@ -158,8 +206,7 @@ public class GameController {
         switch (selectionPhase) {
             case SELECT_FROM -> selectablePositions.addAll(model.getDotPositions());
             case SELECT_TO -> {
-                var dotNumber = model.getDotNumber(selected).getAsInt();
-                for (var direction : model.getValidMoves(dotNumber)) {
+                for (var direction : model.getValidMoves(0)) {
                     selectablePositions.add(selected.moveTo(direction));
                 }
             }

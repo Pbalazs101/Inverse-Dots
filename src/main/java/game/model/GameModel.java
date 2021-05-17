@@ -10,7 +10,9 @@ public class GameModel {
 
     private final Dot [] dots;
 
-
+    /**
+     * Initiates a starting position with a PLAYER and OPPONENT.
+     */
     public GameModel() {
         this(new Dot(DotType.PLAYER, new Position(0, 4)),
                 new Dot(DotType.OPPONENT, new Position(6, 2)));
@@ -21,6 +23,11 @@ public class GameModel {
         this.dots = dots.clone();
     }
 
+
+    /**
+     * Determines if a given state is valid.
+     * @param dots
+     */
     private void checkDots(Dot[] dots) {
         var seen = new HashSet<Position>();
         for (var dot : dots) {
@@ -31,21 +38,33 @@ public class GameModel {
         }
     }
 
-    public int getDotCount() {
-        return dots.length;
-    }
 
-    public DotType getDotType(int dotNumber) {
-        return dots[dotNumber].getType();
-    }
+    /**
+     * Returns a position object describing a dot with the given dotNumber.
+     *
+     * @param dotNumber
+     * @return
+     */
 
     public Position getDotPosition(int dotNumber) {
         return dots[dotNumber].getPosition();
     }
 
+    /**
+     *
+     * @param dotNumber
+     * @return
+     */
     public ObjectProperty<Position> positionProperty(int dotNumber) {
         return dots[dotNumber].positionProperty();
     }
+
+    /**
+     * Determines the validity of a move.
+     * @param dotNumber
+     * @param direction
+     * @return Boolean according to validity of move.
+     */
 
     public boolean isValidMove(int dotNumber, PlayerDirection direction) {
         if (dotNumber < 0 || dotNumber >= dots.length) {
@@ -63,6 +82,12 @@ public class GameModel {
         return true;
     }
 
+    /**
+     * Returns every possible movement of given dot number.
+     * @param dotNumber
+     * @return EnumSet containing valid moves.
+     */
+
     public Set<PlayerDirection> getValidMoves(int dotNumber) {
         EnumSet<PlayerDirection> validMoves = EnumSet.noneOf(PlayerDirection.class);
         for (var direction : PlayerDirection.values()) {
@@ -73,15 +98,29 @@ public class GameModel {
         return validMoves;
     }
 
+    /**
+     * Moves the given dot according to the given direction.
+     * @param dotNumber
+     * @param direction
+     */
     public void move(int dotNumber, PlayerDirection direction) {
         dots[dotNumber].moveTo(direction);
     }
 
+    /**
+     * Returns a boolean depending on whether the board contains the given position.
+     * @param position
+     * @return
+     */
     public static boolean isOnBoard(Position position) {
         return 0 <= position.row() && position.row() < BOARD_SIZE
                 && 0 <= position.col() && position.col() < BOARD_SIZE;
     }
 
+    /**
+     * Returns occupied positions.
+     * @return List containing positions occupied by any dot.
+     */
     public List<Position> getDotPositions() {
         List<Position> positions = new ArrayList<>(dots.length);
         for (var dot : dots) {
@@ -90,15 +129,10 @@ public class GameModel {
         return positions;
     }
 
-    public OptionalInt getDotNumber(Position position) {
-        for (int i = 0; i < dots.length; i++) {
-            if (dots[i].getPosition().equals(position)) {
-                return OptionalInt.of(i);
-            }
-        }
-        return OptionalInt.empty();
-    }
-
+    /**
+     * Returns the object as represented by a string with a given format.
+     * @return
+     */
     public String toString() {
         StringJoiner joiner = new StringJoiner(",", "[", "]");
         for (var dot : dots) {
