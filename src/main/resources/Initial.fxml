@@ -4,9 +4,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="game.InitialViewController">
    <children>
-      <Button fx:id="playButton" layoutX="246.0" layoutY="186.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="108.0" text="Play" />
+      <Button fx:id="playButton" layoutX="246.0" layoutY="186.0" mnemonicParsing="false" onAction="#handlePlayButton" prefHeight="29.0" prefWidth="108.0" text="Play" />
       <Label layoutX="157.0" layoutY="66.0" text="Inverse Dots">
          <font>
             <Font name="System Bold" size="55.0" />
