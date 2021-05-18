@@ -107,8 +107,8 @@ public class GameController {
 
     /**
      * Visually showing dot on board with set size.
-     * @param color
-     * @return
+     * @param color Color to fill.
+     * @return Circle object.
      */
     private Circle createDot(Color color) {
         var dot = new Circle(25); // Size of dot
@@ -118,7 +118,7 @@ public class GameController {
 
     /**
      * Driver code for mouse click event listener.
-     * @param event
+     * @param event .
      */
     @FXML
     private void handleMouseClick(MouseEvent event) {
@@ -132,7 +132,7 @@ public class GameController {
 
     /**
      * Handles clicks when position is about the get changed or we are about selecting dots.
-     * @param position
+     * @param position .
      */
     private void handleClickOnSquare(Position position) {
         switch (selectionPhase) {
@@ -175,7 +175,7 @@ public class GameController {
 
     /**
      * Recieves a position and sets it as the selected one.
-     * @param position
+     * @param position .
      */
     private void selectPosition(Position position) {
         selected = position;
@@ -243,8 +243,8 @@ public class GameController {
 
     /**
      * Returns the square on the given position if a dot is present on it.
-     * @param position
-     * @return
+     * @param position .
+     * @return 
      */
     private StackPane getSquare(Position position) {
         for (var child : board.getChildren()) {
@@ -270,6 +270,9 @@ public class GameController {
         endState();
     }
 
+    /**
+     * Logging when the game has ended.
+     */
     private void endState() {
         if(model.getDotPosition(0).equals(model.getDotPosition(1))) {
             Logger.info("Congratulations, you won!");
