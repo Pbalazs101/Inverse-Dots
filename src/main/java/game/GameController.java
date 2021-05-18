@@ -244,7 +244,7 @@ public class GameController {
     /**
      * Returns the square on the given position if a dot is present on it.
      * @param position .
-     * @return 
+     * @return Square object
      */
     private StackPane getSquare(Position position) {
         for (var child : board.getChildren()) {

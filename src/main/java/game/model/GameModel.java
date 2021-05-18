@@ -26,7 +26,7 @@ public class GameModel {
 
     /**
      * Determines if a given state is valid.
-     * @param dots
+     * @param dots .
      */
     private void checkDots(Dot[] dots) {
         var seen = new HashSet<Position>();
@@ -40,10 +40,9 @@ public class GameModel {
 
 
     /**
-     * Returns a position object describing a dot with the given dotNumber.
      *
-     * @param dotNumber
-     * @return
+     * @param dotNumber .
+     * @return Position object describing a dot with the given dotNumber.
      */
 
     public Position getDotPosition(int dotNumber) {
@@ -52,8 +51,8 @@ public class GameModel {
 
     /**
      *
-     * @param dotNumber
-     * @return
+     * @param dotNumber .
+     * @return Given dot's position property.
      */
     public ObjectProperty<Position> positionProperty(int dotNumber) {
         return dots[dotNumber].positionProperty();
@@ -61,8 +60,8 @@ public class GameModel {
 
     /**
      * Determines the validity of a move.
-     * @param dotNumber
-     * @param direction
+     * @param dotNumber .
+     * @param direction .
      * @return Boolean according to validity of move.
      */
 
@@ -84,7 +83,7 @@ public class GameModel {
 
     /**
      * Returns every possible movement of given dot number.
-     * @param dotNumber
+     * @param dotNumber .
      * @return EnumSet containing valid moves.
      */
 
@@ -100,17 +99,17 @@ public class GameModel {
 
     /**
      * Moves the given dot according to the given direction.
-     * @param dotNumber
-     * @param direction
+     * @param dotNumber .
+     * @param direction .
      */
     public void move(int dotNumber, PlayerDirection direction) {
         dots[dotNumber].moveTo(direction);
     }
 
     /**
-     * Returns a boolean depending on whether the board contains the given position.
-     * @param position
-     * @return
+     * Returns a
+     * @param position .
+     * @return Boolean depending on whether the board contains the given position.
      */
     public static boolean isOnBoard(Position position) {
         return 0 <= position.row() && position.row() < BOARD_SIZE
@@ -130,8 +129,8 @@ public class GameModel {
     }
 
     /**
-     * Returns the object as represented by a string with a given format.
-     * @return
+     * 
+     * @return Object as represented by a string with a given format.
      */
     public String toString() {
         StringJoiner joiner = new StringJoiner(",", "[", "]");

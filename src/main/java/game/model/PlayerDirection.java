@@ -26,10 +26,10 @@ public enum PlayerDirection implements Direction {
     }
 
     /**
-     * Returns the defined name of direction by recieving col and row change.
-     * @param rowChange
-     * @param colChange
-     * @return
+     *
+     * @param rowChange .
+     * @param colChange .
+     * @return Direction object (The defined name of direction by recieving col and row change).
      */
     public static PlayerDirection of(int rowChange, int colChange) {
         for (var direction : values()) {

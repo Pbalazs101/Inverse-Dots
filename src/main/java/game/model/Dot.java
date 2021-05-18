@@ -16,7 +16,7 @@ public class Dot {
 
     /**
      * Sets a new value for the Position object
-     * @param direction
+     * @param direction .
      */
     public void moveTo(Direction direction) {
         Position newPosition = position.get().moveTo(direction);
@@ -28,8 +28,8 @@ public class Dot {
     }
 
     /**
-     * Returns dot type and its position as a string.
-     * @return
+     *
+     * @return Dot type and its position as a string
      */
     public String toString() {
         return type.toString() + position.get().toString();
@@ -37,8 +37,8 @@ public class Dot {
 
 
     /**
-     * Returns position object.
-     * @return
+     *
+     * @return Position object.
      */
     public Position getPosition() {
         return position.get();
