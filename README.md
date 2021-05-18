@@ -9,4 +9,4 @@ Use the mouse to controll the red dot on the board. The blue dot will replicate 
 
 How to use:
 -----------
--WIP-
+Compile with JDK version 16 (or higher) use `mvn javafx:run` to start the game. Click on the red dot to see its available moving positions and move to the desired position.
