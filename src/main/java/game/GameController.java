@@ -28,7 +28,7 @@ public class GameController {
 
         /**
          * Alternating between dot and destination selection.
-         * @return
+         * @return current phase
          */
         public SelectionPhase alter() {
             return switch (this) {
@@ -77,7 +77,7 @@ public class GameController {
 
     /**
      * Creating squares as stackpane and adding event listener to square objects and initializing css classes.
-     * @return
+     * @return new StackPane object.
      */
     private StackPane createSquare() {
         var square = new StackPane();
@@ -267,6 +267,10 @@ public class GameController {
         StackPane newSquare = getSquare(newPosition);
         newSquare.getChildren().addAll(oldSquare.getChildren());
         oldSquare.getChildren().clear();
+        endState();
+    }
+
+    private void endState() {
         if(model.getDotPosition(0).equals(model.getDotPosition(1))) {
             Logger.info("Congratulations, you won!");
         }
