@@ -1,17 +1,3 @@
-.square {
-    -fx-background-color: grey;
-}
-
-.selected {
-    -fx-background-color: silver;
-}
-
-
-.selectable {
-    -fx-border-color: red;
-}
-
-
 .wall13 {
     -fx-border-width: 5;
     /*-fx-border-insets: -3;*/
@@ -20,7 +6,7 @@
 
 .wall22 {
     -fx-border-width: 5;
-    -fx-border-style: solid solid solid solid;
+    -fx-border-style: none none solid none;
 }
 
 .wall31 {
@@ -57,3 +43,18 @@
     -fx-border-width: 5;
     -fx-border-style: solid none none solid;
 }
+
+.square {
+    -fx-background-color: grey;
+}
+
+.selected {
+    -fx-background-color: silver;
+}
+
+
+.selectable {
+    -fx-border-color: red;
+}
+
+
