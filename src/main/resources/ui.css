@@ -1,47 +1,49 @@
 .wall13 {
     -fx-border-width: 5;
-    /*-fx-border-insets: -3;*/
-    -fx-border-style: solid none solid solid;
+    -fx-border-insets: -3;
+    -fx-border-style: solid dotted solid solid;
 }
 
 .wall22 {
+    -fx-border-insets: -3;
     -fx-border-width: 5;
-    -fx-border-style: none none solid none;
+    -fx-border-style: dotted dotted solid solid;
 }
 
 .wall31 {
+    -fx-border-insets: -3;
     -fx-border-width: 5;
-    -fx-border-style: none none solid none;
+    -fx-border-style: dotted dotted solid dotted;
 }
 
 .wall34 {
+    -fx-border-insets: -3;
     -fx-border-width: 5;
-    -fx-border-style: solid none solid solid;
+    -fx-border-style: solid dotted solid solid;
 }
 
 .wall43 {
+    -fx-border-insets: -3;
     -fx-border-width: 5;
-    -fx-border-style: none none solid solid;
-}
-
-.wall53 {
-    -fx-border-width: 5;
-    -fx-border-style: solid none solid solid;
+    -fx-border-style: dotted dotted solid solid;
 }
 
 .wall56 {
+    -fx-border-insets: -3;
     -fx-border-width: 5;
-    -fx-border-style: solid none none solid;
+    -fx-border-style: solid dotted dotted solid;
 }
 
 .wall60 {
+    -fx-border-insets: -3;
     -fx-border-width: 5;
-    -fx-border-style: none solid none none;
+    -fx-border-style: dotted solid solid solid;
 }
 
 .wall63 {
+    -fx-border-insets: -3;
     -fx-border-width: 5;
-    -fx-border-style: solid none none solid;
+    -fx-border-style: solid dotted solid solid;
 }
 
 .square {
