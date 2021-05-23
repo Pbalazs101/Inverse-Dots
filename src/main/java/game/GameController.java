@@ -1,8 +1,13 @@
 package game;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import game.model.Direction;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
@@ -216,6 +221,10 @@ public class GameController {
             case SELECT_TO -> {
                 for (var direction : model.getValidMoves(0)) {
                     selectablePositions.add(selected.moveTo(direction));
+                    Logger.info("Selectable moves:"+selectablePositions);
+                    System.out.println(selectablePositions.get(0));
+                    System.out.println();
+                    System.out.println(direction.name());
                 }
             }
         }
@@ -274,8 +283,22 @@ public class GameController {
      * Logging when the game has ended.
      */
     private void endState() {
+        List<Score> scores = new ArrayList<Score>();
         if(model.getDotPosition(0).equals(model.getDotPosition(1))) {
+
+
             Logger.info("Congratulations, you won!");
+            ObjectMapper objectMapper = new ObjectMapper();
+            scores.add(new Score("Player","9"));
+            try {
+                //objectMapper.writeValue(new File("target/scores.json"), score);
+                objectMapper.writeValue(new File("target/scores2.json"), scores);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+
         }
     }
 
