@@ -3,12 +3,12 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="game.LeaderboardViewController">
    <children>
-      <TableView prefHeight="200.0" prefWidth="200.0">
+      <TableView fx:id="tableView" prefHeight="200.0" prefWidth="200.0">
         <columns>
-          <TableColumn minWidth="-1.0" prefWidth="301.0" text="Name" />
-          <TableColumn minWidth="-1.0" prefWidth="298.0" sortType="DESCENDING" text="Steps" />
+          <TableColumn fx:id="name" minWidth="-1.0" prefWidth="301.0" text="Name" />
+          <TableColumn fx:id="steps" minWidth="-1.0" prefWidth="298.0" sortType="DESCENDING" text="Steps" />
         </columns>
       </TableView>
    </children>
