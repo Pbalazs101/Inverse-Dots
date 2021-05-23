@@ -23,7 +23,7 @@ public class LeaderboardViewController {
     private TableColumn<Score, String> name;
 
     @FXML
-    private TableColumn<Score, Integer> steps;
+    private TableColumn<Score, String> steps;
 
     @FXML
     private void initialize() throws IOException {

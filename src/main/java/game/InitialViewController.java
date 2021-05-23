@@ -26,7 +26,15 @@ import java.io.IOException;
         private void handlePlayButton(ActionEvent event) throws IOException {
             FXMLLoader fxmlLoader = new FXMLLoader(GameApplication.class.getResource("/ui.fxml"));
             Parent root = fxmlLoader.load();
-            //InitialViewController controller = fxmlLoader.<InitialViewController>getController();
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
+        }
+
+        @FXML
+        private void handleLeaderboardButton(ActionEvent event) throws IOException {
+            FXMLLoader fxmlLoader = new FXMLLoader(GameApplication.class.getResource("/Leaderboard.fxml"));
+            Parent root = fxmlLoader.load();
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.show();
