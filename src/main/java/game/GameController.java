@@ -43,6 +43,8 @@ public class GameController {
         }
     }
 
+    private int numberOfSteps = 1;
+
     private SelectionPhase selectionPhase = SelectionPhase.SELECT_FROM;
 
     private List<Position> selectablePositions = new ArrayList<>();
@@ -162,6 +164,7 @@ public class GameController {
 
                     deselectSelectedPosition();
                     alterSelectionPhase();
+                    numberOfSteps += 1;
 
                 }
             }
@@ -288,6 +291,7 @@ public class GameController {
 
 
             Logger.info("Congratulations, you won!");
+            Logger.info("Numer of steps made: "+numberOfSteps);
             ObjectMapper objectMapper = new ObjectMapper();
             scores.add(new Score("Player","9"));
             try {
