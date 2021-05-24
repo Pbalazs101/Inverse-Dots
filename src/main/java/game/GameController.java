@@ -220,7 +220,7 @@ public class GameController {
     private void setSelectablePositions() {
         selectablePositions.clear();
         switch (selectionPhase) {
-            case SELECT_FROM -> selectablePositions.addAll(model.getDotPositions());
+            case SELECT_FROM -> selectablePositions.add(model.getDotPosition(0));
             case SELECT_TO -> {
                 for (var direction : model.getValidMoves(0)) {
                     selectablePositions.add(selected.moveTo(direction));
@@ -291,7 +291,7 @@ public class GameController {
 
 
             Logger.info("Congratulations, you won!");
-            Logger.info("Numer of steps made: "+numberOfSteps);
+            Logger.info("Number of steps made: "+numberOfSteps);
             ObjectMapper objectMapper = new ObjectMapper();
             scores.add(new Score("Player","9"));
             try {
