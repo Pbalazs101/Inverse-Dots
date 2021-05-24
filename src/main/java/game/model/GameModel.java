@@ -1,6 +1,7 @@
 package game.model;
 
 import javafx.beans.property.ObjectProperty;
+import org.tinylog.Logger;
 
 import java.util.*;
 
@@ -10,12 +11,38 @@ public class GameModel {
 
     private final Dot [] dots;
 
+    private final ArrayList<Wall> walls = new ArrayList<>();
+
     /**
      * Initiates a starting position with a PLAYER and OPPONENT.
      */
     public GameModel() {
         this(new Dot(DotType.PLAYER, new Position(0, 4)),
                 new Dot(DotType.OPPONENT, new Position(6, 2)));
+        walls.add(new Wall(new Position(1,2),new Position(1,3)));
+        walls.add(new Wall(new Position(0,3),new Position(1,3)));
+        walls.add(new Wall(new Position(1,3),new Position(2,3)));
+
+        walls.add(new Wall(new Position(2,1),new Position(2,2)));
+        walls.add(new Wall(new Position(2,2),new Position(3,2)));
+
+        walls.add(new Wall(new Position(3,1),new Position(4,1)));
+
+        walls.add(new Wall(new Position(2,4),new Position(3,4)));
+        walls.add(new Wall(new Position(3,3),new Position(3,4)));
+        walls.add(new Wall(new Position(3,4),new Position(4,4)));
+
+        walls.add(new Wall(new Position(4,2),new Position(4,3)));
+        walls.add(new Wall(new Position(4,3),new Position(5,3)));
+
+        walls.add(new Wall(new Position(5,5),new Position(5,6)));
+        walls.add(new Wall(new Position(4,6),new Position(5,6)));
+
+        walls.add(new Wall(new Position(6,0),new Position(6,1)));
+
+        walls.add(new Wall(new Position(6,3),new Position(5,3)));
+        walls.add(new Wall(new Position(6,2),new Position(6,3)));
+
     }
 
     public GameModel(Dot... dots) {
@@ -69,12 +96,31 @@ public class GameModel {
         if (dotNumber < 0 || dotNumber >= dots.length) {
             throw new IllegalArgumentException();
         }
-        Position newPosition = dots[dotNumber].getPosition().moveTo(direction);
+
+        var inverseDirectionRowChange = direction.getRowChange()*-1;
+        var inverseDirectionColChange = direction.getColChange()*-1;
+
+        var inverseDirection = PlayerDirection.of(inverseDirectionRowChange,inverseDirectionColChange);
+
+        Position oldPosition = dots[0].getPosition();
+        Position newPosition = dots[0].getPosition().moveTo(direction);
+        Position oldPosition2 = dots[1].getPosition();
+        Position newPosition2 = dots[1].getPosition().moveTo(inverseDirection);
         if (! isOnBoard(newPosition)) {
             return false;
         }
         for (var dot : dots) {
             if (dot.getPosition().equals(newPosition)) {
+                return false;
+            }
+        }
+        for (var w : walls){
+            if (w.containsAll(oldPosition,newPosition)) {
+                return false;
+            }
+        }
+        for (var w : walls){
+            if (w.containsAll(oldPosition2,newPosition2)) {
                 return false;
             }
         }
