@@ -7,11 +7,23 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
     public class InitialViewController extends Application {
+
+        public static String getName() {
+            return name;
+        }
+
+        public static String name;
+
+        @FXML
+        private TextField nameTextField;
+
         @Override
         public void start(Stage stage) throws IOException {
             Parent root = FXMLLoader.load(getClass().getResource("/Initial.fxml"));
@@ -38,6 +50,12 @@ import java.io.IOException;
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.show();
+        }
+
+        @FXML
+        public void handleTextFieldEditingDidEnd(ActionEvent event) {
+            name = nameTextField.getText();
+
         }
     }
 

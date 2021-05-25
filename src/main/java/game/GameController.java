@@ -287,10 +287,12 @@ public class GameController {
      */
     private void endState() {
         List<Score> scores = new ArrayList<Score>();
+        var playerName = InitialViewController.getName();
         if(model.getDotPosition(0).equals(model.getDotPosition(1))) {
 
 
             Logger.info("Congratulations, you won!");
+            Logger.info("Name:"+playerName);
             Logger.info("Number of steps made: "+numberOfSteps);
             ObjectMapper objectMapper = new ObjectMapper();
             scores.add(new Score("Player","9"));
