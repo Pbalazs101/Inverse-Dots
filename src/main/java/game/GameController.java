@@ -287,7 +287,14 @@ public class GameController {
      */
     private void endState() {
         List<Score> scores = new ArrayList<Score>();
-        var playerName = InitialViewController.getName();
+        var playerName = "";
+        if (InitialViewController.name != null) {
+            playerName = InitialViewController.getName();
+        } else {
+            playerName = "Unnamed Player";
+        }
+
+
         if(model.getDotPosition(0).equals(model.getDotPosition(1))) {
 
 
@@ -295,7 +302,7 @@ public class GameController {
             Logger.info("Name:"+playerName);
             Logger.info("Number of steps made: "+numberOfSteps);
             ObjectMapper objectMapper = new ObjectMapper();
-            scores.add(new Score("Player","9"));
+            scores.add(new Score(playerName,String.valueOf(numberOfSteps)));
             try {
                 //objectMapper.writeValue(new File("target/scores.json"), score);
                 objectMapper.writeValue(new File("target/scores2.json"), scores);
