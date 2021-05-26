@@ -7,7 +7,7 @@ import java.util.List;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import game.model.Direction;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
@@ -52,6 +52,8 @@ public class GameController {
     private Position selected;
 
     private GameModel model = new GameModel();
+
+    private List<Score> scores2;
 
     @FXML
     private GridPane board;
@@ -296,7 +298,13 @@ public class GameController {
 
 
         if(model.getDotPosition(0).equals(model.getDotPosition(1))) {
-
+            try {
+                scores2 = new ObjectMapper()
+                        .registerModule(new JavaTimeModule())
+                        .readValue(LeaderboardViewController.class.getResourceAsStream("/scores.json"), new TypeReference<List<Score>>() {});
+            } catch (Exception e) {
+                System.out.println("Exception");
+            }
 
             Logger.info("Congratulations, you won!");
             Logger.info("Name:"+playerName);
@@ -304,12 +312,12 @@ public class GameController {
             ObjectMapper objectMapper = new ObjectMapper();
             scores.add(new Score(playerName,String.valueOf(numberOfSteps)));
             try {
-                //objectMapper.writeValue(new File("target/scores.json"), score);
                 objectMapper.writeValue(new File("target/scores2.json"), scores);
 
             } catch (IOException e) {
                 e.printStackTrace();
             }
+
 
 
         }
@@ -320,15 +328,15 @@ public class GameController {
      * Calls each method to display walls according to figure number 39.
      */
     private void wallBuilder() {
-        showWall13(); //OK
+        showWall13();
         showWall22();
         showWall31();
-        showWall34(); //OK
+        showWall34();
         showWall43();
-        showWall53(); //OK
-        showWall56(); //OK
+        showWall53();
+        showWall56();
         showWall60();
-        showWall63(); //OK
+        showWall63();
     }
 
     /**
