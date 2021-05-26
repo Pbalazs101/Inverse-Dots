@@ -224,7 +224,7 @@ public class GameController {
         switch (selectionPhase) {
             case SELECT_FROM -> selectablePositions.add(model.getDotPosition(0));
             case SELECT_TO -> {
-                for (var direction : model.getValidMoves(0)) {
+                for (var direction : model.getValidMoves()) {
                     selectablePositions.add(selected.moveTo(direction));
                     Logger.info("Selectable moves:"+selectablePositions);
                     System.out.println(selectablePositions.get(0));

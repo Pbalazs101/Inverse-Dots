@@ -87,15 +87,11 @@ public class GameModel {
 
     /**
      * Determines the validity of a move.
-     * @param dotNumber .
      * @param direction .
      * @return Boolean according to validity of move.
      */
 
-    public boolean isValidMove(int dotNumber, PlayerDirection direction) {
-        if (dotNumber < 0 || dotNumber >= dots.length) {
-            throw new IllegalArgumentException();
-        }
+    public boolean isValidMove(PlayerDirection direction) {
 
         var inverseDirectionRowChange = direction.getRowChange()*-1;
         var inverseDirectionColChange = direction.getColChange()*-1;
@@ -129,14 +125,13 @@ public class GameModel {
 
     /**
      * Returns every possible movement of given dot number.
-     * @param dotNumber .
      * @return EnumSet containing valid moves.
      */
 
-    public Set<PlayerDirection> getValidMoves(int dotNumber) {
+    public Set<PlayerDirection> getValidMoves() {
         EnumSet<PlayerDirection> validMoves = EnumSet.noneOf(PlayerDirection.class);
         for (var direction : PlayerDirection.values()) {
-            if (isValidMove(dotNumber, direction)) {
+            if (isValidMove(direction)) {
                 validMoves.add(direction);
             }
         }
