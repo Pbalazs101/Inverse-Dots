@@ -1,7 +1,6 @@
 package game.model;
 
 import javafx.beans.property.ObjectProperty;
-import org.tinylog.Logger;
 
 import java.util.*;
 
@@ -19,30 +18,7 @@ public class GameModel {
     public GameModel() {
         this(new Dot(DotType.RED, new Position(0, 4)),
                 new Dot(DotType.BLUE, new Position(6, 2)));
-        walls.add(new Wall(new Position(1,2),new Position(1,3)));
-        walls.add(new Wall(new Position(0,3),new Position(1,3)));
-        walls.add(new Wall(new Position(1,3),new Position(2,3)));
-
-        walls.add(new Wall(new Position(2,1),new Position(2,2)));
-        walls.add(new Wall(new Position(2,2),new Position(3,2)));
-
-        walls.add(new Wall(new Position(3,1),new Position(4,1)));
-
-        walls.add(new Wall(new Position(2,4),new Position(3,4)));
-        walls.add(new Wall(new Position(3,3),new Position(3,4)));
-        walls.add(new Wall(new Position(3,4),new Position(4,4)));
-
-        walls.add(new Wall(new Position(4,2),new Position(4,3)));
-        walls.add(new Wall(new Position(4,3),new Position(5,3)));
-
-        walls.add(new Wall(new Position(5,5),new Position(5,6)));
-        walls.add(new Wall(new Position(4,6),new Position(5,6)));
-
-        walls.add(new Wall(new Position(6,0),new Position(6,1)));
-
-        walls.add(new Wall(new Position(6,3),new Position(5,3)));
-        walls.add(new Wall(new Position(6,2),new Position(6,3)));
-
+        createWallPhysics();
     }
 
     private GameModel(Dot... dots) {
@@ -186,6 +162,36 @@ public class GameModel {
             joiner.add(dot.toString());
         }
         return joiner.toString();
+    }
+
+    /**
+     * Creating barriers between squares according the diagram.
+     */
+    private void createWallPhysics () {
+        walls.add(new Wall(new Position(1,2),new Position(1,3)));
+        walls.add(new Wall(new Position(0,3),new Position(1,3)));
+        walls.add(new Wall(new Position(1,3),new Position(2,3)));
+
+        walls.add(new Wall(new Position(2,1),new Position(2,2)));
+        walls.add(new Wall(new Position(2,2),new Position(3,2)));
+
+        walls.add(new Wall(new Position(3,1),new Position(4,1)));
+
+        walls.add(new Wall(new Position(2,4),new Position(3,4)));
+        walls.add(new Wall(new Position(3,3),new Position(3,4)));
+        walls.add(new Wall(new Position(3,4),new Position(4,4)));
+
+        walls.add(new Wall(new Position(4,2),new Position(4,3)));
+        walls.add(new Wall(new Position(4,3),new Position(5,3)));
+
+        walls.add(new Wall(new Position(5,5),new Position(5,6)));
+        walls.add(new Wall(new Position(4,6),new Position(5,6)));
+
+        walls.add(new Wall(new Position(6,0),new Position(6,1)));
+
+        walls.add(new Wall(new Position(6,3),new Position(5,3)));
+        walls.add(new Wall(new Position(6,2),new Position(6,3)));
+
     }
 
     public static void main(String[] args) {
