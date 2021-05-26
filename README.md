@@ -1,7 +1,7 @@
 Inverse-Dots
 =========================
 
-Inverse-Dot game implementation based on homework-template-project and javafx-board-game-example3.
+Inverse-Dot game implementation based on [homework-template-project](https://github.com/INBPM0420/homework-template-project) and [javafx-board-game-example3](https://github.com/jeszy75/javafx-board-game-example3).
 
 Goal of the game:
 -----------------
