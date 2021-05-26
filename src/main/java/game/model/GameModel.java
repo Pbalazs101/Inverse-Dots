@@ -17,8 +17,8 @@ public class GameModel {
      * Initiates a starting position with a PLAYER and OPPONENT.
      */
     public GameModel() {
-        this(new Dot(DotType.PLAYER, new Position(0, 4)),
-                new Dot(DotType.OPPONENT, new Position(6, 2)));
+        this(new Dot(DotType.RED, new Position(0, 4)),
+                new Dot(DotType.BLUE, new Position(6, 2)));
         walls.add(new Wall(new Position(1,2),new Position(1,3)));
         walls.add(new Wall(new Position(0,3),new Position(1,3)));
         walls.add(new Wall(new Position(1,3),new Position(2,3)));

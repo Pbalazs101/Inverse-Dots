@@ -46,7 +46,7 @@ public class Dot {
 
 
     public static void main(String[] args) {
-        Dot dot = new Dot(DotType.PLAYER, new Position(0, 0));
+        Dot dot = new Dot(DotType.RED, new Position(0, 0));
         dot.positionProperty().addListener((observableValue, oldPosition, newPosition) -> {
             System.out.printf("%s -> %s\n", oldPosition.toString(), newPosition.toString());
         });
