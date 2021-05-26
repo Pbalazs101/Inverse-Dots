@@ -6,15 +6,14 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="game.InitialViewController">
    <children>
-      <Button fx:id="playButton" layoutX="246.0" layoutY="186.0" mnemonicParsing="false" onAction="#handlePlayButton" prefHeight="29.0" prefWidth="108.0" text="Play" />
+      <Button fx:id="playButton" layoutX="246.0" layoutY="200.0" mnemonicParsing="false" onAction="#handlePlayButton" prefHeight="29.0" prefWidth="108.0" text="Play" />
       <Label layoutX="157.0" layoutY="66.0" text="Inverse Dots">
          <font>
             <Font name="System Bold" size="55.0" />
          </font>
       </Label>
-      <Button layoutX="246.0" layoutY="234.0" mnemonicParsing="false" onAction="#handleLeaderboardButton" prefHeight="29.0" prefWidth="108.0" text="Leaderboard" />
-      <Button layoutX="246.0" layoutY="281.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="108.0" text="Settings" />
-      <TextField fx:id="nameTextField" layoutX="220.0" layoutY="339.0" onAction="#handleTextFieldEditingDidEnd" promptText="Name" />
+      <Button layoutX="246.0" layoutY="265.0" mnemonicParsing="false" onAction="#handleLeaderboardButton" prefHeight="29.0" prefWidth="108.0" text="Leaderboard" />
+      <TextField fx:id="nameTextField" layoutX="220.0" layoutY="341.0" onAction="#handleTextFieldEditingDidEnd" promptText="Name" />
       <Label layoutX="114.0" layoutY="41.0" prefHeight="89.0" prefWidth="43.0" text="•" textFill="RED">
          <font>
             <Font size="96.0" />
