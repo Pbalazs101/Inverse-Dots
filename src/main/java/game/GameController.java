@@ -161,8 +161,8 @@ public class GameController {
 
                     var inverseDirection = PlayerDirection.of(inverseDirectionRowChange,inverseDirectionColChange);
 
-                    model.move(0, direction);
-                    model.move(1, inverseDirection);
+                    model.move(direction);
+                    model.moveBlue(inverseDirection);
 
                     deselectSelectedPosition();
                     alterSelectionPhase();

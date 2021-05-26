@@ -14,7 +14,7 @@ public class GameModel {
     private final ArrayList<Wall> walls = new ArrayList<>();
 
     /**
-     * Initiates a starting position with a PLAYER and OPPONENT.
+     * Initiates a starting position with a RED and BLUE dots.
      */
     public GameModel() {
         this(new Dot(DotType.RED, new Position(0, 4)),
@@ -45,7 +45,7 @@ public class GameModel {
 
     }
 
-    public GameModel(Dot... dots) {
+    private GameModel(Dot... dots) {
         checkDots(dots);
         this.dots = dots.clone();
     }
@@ -145,11 +145,18 @@ public class GameModel {
 
     /**
      * Moves the given dot according to the given direction.
-     * @param dotNumber .
      * @param direction .
      */
-    public void move(int dotNumber, PlayerDirection direction) {
-        dots[dotNumber].moveTo(direction);
+    public void move(PlayerDirection direction) {
+        dots[0].moveTo(direction);
+    }
+
+    /**
+     * Moves the blue dot according to the given direction.
+     * @param direction .
+     */
+    public void moveBlue(PlayerDirection direction) {
+        dots[1].moveTo(direction);
     }
 
     /**
