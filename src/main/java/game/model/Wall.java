@@ -16,7 +16,11 @@ public class Wall {
         walls.add(pos2);
     }
 
-
+    /**
+     * @param pos1 .
+     * @param pos2 .
+     * @return Returns true when both squares are in the list.
+     */
     public boolean containsAll(Position pos1, Position pos2) {
         return walls.contains(pos1) && walls.contains(pos2);
     }
