@@ -11,5 +11,6 @@
           <TableColumn fx:id="steps" editable="false" minWidth="-1.0" prefWidth="298.0" sortType="DESCENDING" text="Steps" />
         </columns>
       </TableView>
+      <Button fx:id="BackButton" mnemonicParsing="false" onAction="#handleBackButton" opacity="0.0" prefHeight="414.0" prefWidth="940.0" text="Button" />
    </children>
 </StackPane>
