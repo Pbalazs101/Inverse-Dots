@@ -1,9 +1,7 @@
 import game.model.*;
-import javafx.geometry.Pos;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -48,6 +46,8 @@ public class GameModelTest {
 
     @Test
     void positionProperty() {
+        assertFalse(gameModel.positionProperty(0).equals(gameModel.positionProperty(1)));
+        assertTrue(gameModel.positionProperty(0).equals(gameModel.positionProperty(0)));
     }
 
     @Test
@@ -92,6 +92,10 @@ public class GameModelTest {
 
     @Test
     void getDotPositions() {
+        assertTrue(gameModel.getDotPositions().contains(new Position(0,4)));
+        assertTrue(gameModel.getDotPositions().contains(new Position(6,2)));
+        assertFalse(gameModel.getDotPositions().contains(new Position(0,0)));
+        assertFalse(gameModel.getDotPositions().contains(new Position(5,1)));
     }
 
     @Test
@@ -99,7 +103,4 @@ public class GameModelTest {
         assertEquals("[REDPosition[row=0, col=4],BLUEPosition[row=6, col=2]]", gameModel.toString());
     }
 
-    @Test
-    void main() {
-    }
 }
