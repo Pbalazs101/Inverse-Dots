@@ -21,7 +21,7 @@ public class GameModel {
         createWallPhysics();
     }
 
-    private GameModel(Dot... dots) {
+    public GameModel(Dot... dots) {
         checkDots(dots);
         this.dots = dots.clone();
     }
