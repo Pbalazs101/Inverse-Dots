@@ -193,11 +193,11 @@ public class GameModel {
         walls.add(new Wall(new Position(6,2),new Position(6,3)));
 
     }
-
+    /*
     public static void main(String[] args) {
         GameModel model = new GameModel();
         System.out.println(model);
     }
-
+     */
 
 }
