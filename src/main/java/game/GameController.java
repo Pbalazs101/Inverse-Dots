@@ -9,13 +9,20 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import javafx.beans.value.ObservableValue;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 
+import javafx.stage.Stage;
 import org.tinylog.Logger;
 
 import game.model.GameModel;
@@ -55,8 +62,25 @@ public class GameController {
 
     private List<Score> scores2;
 
+    private boolean isGameOver = false;
+
     @FXML
     private GridPane board;
+
+    @FXML
+    private Button gameOverButton;
+
+    @FXML
+    private void handleGameOverButton(ActionEvent event) throws IOException {
+        /*
+        FXMLLoader fxmlLoader = new FXMLLoader(GameApplication.class.getResource("/Initial.fxml"));
+        Parent root = fxmlLoader.load();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(new Scene(root));
+        stage.show();
+         */
+        System.exit(0);
+    }
 
 
     /**
@@ -167,6 +191,10 @@ public class GameController {
                     deselectSelectedPosition();
                     alterSelectionPhase();
                     numberOfSteps += 1;
+                    if (isGameOver) {
+                        gameOverButton.toFront();
+                        gameOverButton.setOpacity(0.8);
+                    }
 
                 }
             }
@@ -317,8 +345,7 @@ public class GameController {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
-
+            isGameOver = true;
 
         }
     }
