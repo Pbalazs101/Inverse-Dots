@@ -48,14 +48,16 @@ public class GameModelTest {
     void positionProperty() {
         assertFalse(gameModel.positionProperty(0).equals(gameModel.positionProperty(1)));
         assertTrue(gameModel.positionProperty(0).equals(gameModel.positionProperty(0)));
+        assertFalse(gameModel.positionProperty(0).equals(null));
     }
 
     @Test
     void getValidMoves() {
         assertTrue(gameModel.getValidMoves().contains(PlayerDirection.DOWN));
         assertTrue(gameModel.getValidMoves().contains(PlayerDirection.RIGHT));
-        assertFalse(gameModel.getValidMoves().contains(PlayerDirection.UP));
         assertTrue(gameModel.getValidMoves().contains(PlayerDirection.LEFT));
+        assertFalse(gameModel.getValidMoves().contains(PlayerDirection.UP));
+        assertFalse(gameModel.getValidMoves().contains(null));
 
     }
 
@@ -64,6 +66,16 @@ public class GameModelTest {
         gameModel.move(PlayerDirection.DOWN);
         assertPosition(1,4, gameModel.getDotPosition(0));
         assertPosition(6,2, gameModel.getDotPosition(1));
+        gameModel.move(PlayerDirection.RIGHT);
+        assertPosition(1,5, gameModel.getDotPosition(0));
+        assertPosition(6,2, gameModel.getDotPosition(1));
+        gameModel.move(PlayerDirection.LEFT);
+        assertPosition(1,4, gameModel.getDotPosition(0));
+        assertPosition(6,2, gameModel.getDotPosition(1));
+        gameModel.move(PlayerDirection.UP);
+        assertPosition(0,4, gameModel.getDotPosition(0));
+        assertPosition(6,2, gameModel.getDotPosition(1));
+
     }
 
     @Test
@@ -88,6 +100,7 @@ public class GameModelTest {
         assertTrue(gameModel.isValidMove(PlayerDirection.DOWN));
         assertTrue(gameModel.isValidMove(PlayerDirection.RIGHT));
         assertTrue(gameModel.isValidMove(PlayerDirection.LEFT));
+        assertThrows(NullPointerException.class, () -> gameModel.isValidMove(null));
     }
 
     @Test
