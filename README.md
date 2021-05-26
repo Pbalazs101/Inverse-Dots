@@ -10,3 +10,8 @@ Use the mouse to control the red dot on the board. The blue dot will replicate y
 How to use:
 -----------
 Compile with JDK version 16 (or higher) use `mvn javafx:run` to start the game. Click on the red dot to see its available moving positions and move to the desired position.
+
+Screenshot:
+-----------
+![ScrGame](game.png)
+![ScrInitial](initial.png)
