@@ -14,7 +14,9 @@ Compile with JDK version 16 (or higher) use `mvn javafx:run` to start the game. 
 Screenshot:
 -----------
 Starting screen:
+
 ![ScrInitial](initial.png)
 
 Game:
+
 ![ScrGame](game.png)
