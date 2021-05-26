@@ -5,7 +5,7 @@ Inverse-Dot game implementation based on homework-template-project and javafx-bo
 
 Goal of the game:
 -----------------
-Use the mouse to controll the red dot on the board. The blue dot will replicate your movements but mirrored. The goal is for the two dots to meet.
+Use the mouse to control the red dot on the board. The blue dot will replicate your movements but in the inverse direction. The goal is for the two dots to meet. Avoid walls on your way. You are able to cross dotted but not solid lines. The movement of the red dot is restricted based on the blue dot's position.
 
 How to use:
 -----------
