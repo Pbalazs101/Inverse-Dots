@@ -1,6 +1,8 @@
 package game;
 
+import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
@@ -33,14 +35,20 @@ public class LeaderboardViewController {
 
     @FXML
     private void initialize() throws IOException {
+        File save = new File(System.getProperty("user.dir"),"scores.json");
         name.setCellValueFactory(new PropertyValueFactory<>("name"));
         steps.setCellValueFactory(new PropertyValueFactory<>("steps"));
-        List<Score> scores = new ObjectMapper()
-                .registerModule(new JavaTimeModule())
-                .readValue(LeaderboardViewController.class.getResourceAsStream("/scores.json"), new TypeReference<List<Score>>() {});
-        ObservableList<Score> observableList = FXCollections.observableArrayList();
-        observableList.addAll(scores);
-        tableView.setItems(observableList);
+        if (save.isFile()) {
+            List<Score> scores = new ObjectMapper()
+                    .readValue(save, new TypeReference<List<Score>>() {
+                    });
+            if (scores == null) {
+                scores = new ArrayList<>();
+            }
+            ObservableList<Score> observableList = FXCollections.observableArrayList();
+            observableList.addAll(scores);
+            tableView.setItems(observableList);
+        }
     }
 
     @FXML

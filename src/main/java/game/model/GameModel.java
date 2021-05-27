@@ -4,6 +4,9 @@ import javafx.beans.property.ObjectProperty;
 
 import java.util.*;
 
+/**
+ * Class representing the state of the game.
+ */
 public class GameModel {
 
     public static int BOARD_SIZE = 7;
@@ -32,6 +35,9 @@ public class GameModel {
      * @param dots .
      */
     private void checkDots(Dot[] dots) {
+        if (dots.length != 2) {
+            throw new IllegalArgumentException();
+        }
         var seen = new HashSet<Position>();
         for (var dot : dots) {
             if (! isOnBoard(dot.getPosition()) || seen.contains(dot.getPosition())) {
@@ -79,6 +85,9 @@ public class GameModel {
         Position oldPosition2 = dots[1].getPosition();
         Position newPosition2 = dots[1].getPosition().moveTo(inverseDirection);
         if (! isOnBoard(newPosition)) {
+            return false;
+        }
+        if (! isOnBoard(newPosition2)) {
             return false;
         }
         for (var dot : dots) {
@@ -191,6 +200,8 @@ public class GameModel {
 
         walls.add(new Wall(new Position(6,3),new Position(5,3)));
         walls.add(new Wall(new Position(6,2),new Position(6,3)));
+
+        //walls.add(new Wall(new Position(6,0),new Position(6,4)));
 
     }
 

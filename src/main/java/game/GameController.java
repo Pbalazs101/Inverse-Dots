@@ -50,6 +50,11 @@ public class GameController {
         }
     }
 
+    /**
+     * Represents saving file.
+     */
+    private File save;
+
     private int numberOfSteps = 1;
 
     private SelectionPhase selectionPhase = SelectionPhase.SELECT_FROM;
@@ -94,6 +99,7 @@ public class GameController {
         setSelectablePositions();
         showSelectablePositions();
         wallBuilder();
+        save = new File(System.getProperty("user.dir"),"scores.json");
     }
 
     /**
@@ -329,22 +335,33 @@ public class GameController {
             try {
                 scores2 = new ObjectMapper()
                         .registerModule(new JavaTimeModule())
-                        .readValue(LeaderboardViewController.class.getResourceAsStream("/scores.json"), new TypeReference<List<Score>>() {});
+                        .readValue(LeaderboardViewController.class.getResourceAsStream("scores.json"), new TypeReference<List<Score>>() {});
             } catch (Exception e) {
-                System.out.println("Exception");
+                System.out.println("scores.json not found. Creating file.");
             }
+
+            System.out.println(scores2);
 
             Logger.info("Congratulations, you won!");
             Logger.info("Name:"+playerName);
             Logger.info("Number of steps made: "+numberOfSteps);
+
             ObjectMapper objectMapper = new ObjectMapper();
             scores.add(new Score(playerName,String.valueOf(numberOfSteps)));
             try {
-                objectMapper.writeValue(new File("target/scores2.json"), scores);
-
-            } catch (IOException e) {
+                List<Score> scores2 = null;
+                if (!save.isFile())
+                    save.createNewFile();
+                else {
+                    scores2 = new ObjectMapper()
+                            .readValue(save, new TypeReference<List<Score>>() {});
+                    scores.addAll(scores2);
+                }
+                objectMapper.writeValue(save, scores);
+            } catch (IOException e){
                 e.printStackTrace();
             }
+
             isGameOver = true;
 
         }

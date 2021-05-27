@@ -1,5 +1,8 @@
 package game.model;
 
+/**
+ * Representing the four directions in which the player can move.
+ */
 public enum PlayerDirection implements Direction {
 
     UP(-1, 0),

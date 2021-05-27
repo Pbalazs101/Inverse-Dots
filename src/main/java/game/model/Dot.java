@@ -3,19 +3,27 @@ package game.model;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 
+/**
+ * Class representing a dot.
+ */
 public class Dot {
 
 
     private final DotType type;
     private final ObjectProperty<Position> position = new SimpleObjectProperty<>();
 
+    /**
+     * Creates a dot object with provided type in the provided position.
+     * @param type
+     * @param position
+     */
     public Dot(DotType type, Position position) {
         this.type = type;
         this.position.set(position);
     }
 
     /**
-     * Sets a new value for the Position object
+     * Moves the dot in the specified direction.
      * @param direction .
      */
     public void moveTo(Direction direction) {
@@ -27,19 +35,12 @@ public class Dot {
         return position;
     }
 
-    /**
-     *
-     * @return Dot type and its position as a string
-     */
+
     public String toString() {
         return type.toString() + position.get().toString();
     }
 
 
-    /**
-     *
-     * @return Position object.
-     */
     public Position getPosition() {
         return position.get();
     }
