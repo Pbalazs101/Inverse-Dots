@@ -29,6 +29,9 @@ import game.model.GameModel;
 import game.model.PlayerDirection;
 import game.model.Position;
 
+/**
+ * Defining the rules of the game and handling mechanics.
+ */
 public class GameController {
 
     /**
@@ -65,8 +68,6 @@ public class GameController {
 
     private GameModel model = new GameModel();
 
-    private List<Score> scores2;
-
     private boolean isGameOver = false;
 
     @FXML
@@ -94,8 +95,8 @@ public class GameController {
     @FXML
     private void initialize() {
         createBoard();
-        createPlayerDot();
-        createOpponentDot();
+        createRedDot();
+        createBlueDot();
         setSelectablePositions();
         showSelectablePositions();
         wallBuilder();
@@ -126,9 +127,9 @@ public class GameController {
     }
 
     /**
-     * Creating PLAYER dot with attributes.
+     * Creating RED dot with attributes.
      */
-    private void createPlayerDot() {
+    private void createRedDot() {
             model.positionProperty(0).addListener(this::dotPositionChange);
             var dot = createDot(Color.rgb(255,0,0));
             getSquare(model.getDotPosition(0)).getChildren().add(dot);
@@ -136,9 +137,9 @@ public class GameController {
     }
 
     /**
-     * Creating OPPONENT dot with attributes.
+     * Creating BLUE dot with attributes.
      */
-    private void createOpponentDot() {
+    private void createBlueDot() {
             model.positionProperty(1).addListener(this::dotPositionChange);
             var dot = createDot(Color.rgb(0,0,255));
             getSquare(model.getDotPosition(1)).getChildren().add(dot);
@@ -332,15 +333,7 @@ public class GameController {
 
 
         if(model.getDotPosition(0).equals(model.getDotPosition(1))) {
-            try {
-                scores2 = new ObjectMapper()
-                        .registerModule(new JavaTimeModule())
-                        .readValue(LeaderboardViewController.class.getResourceAsStream("scores.json"), new TypeReference<List<Score>>() {});
-            } catch (Exception e) {
-                System.out.println("scores.json not found. Creating file.");
-            }
 
-            System.out.println(scores2);
 
             Logger.info("Congratulations, you won!");
             Logger.info("Name:"+playerName);
