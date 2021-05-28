@@ -68,6 +68,8 @@ public class GameController {
 
     private GameModel model = new GameModel();
 
+    private List<Score> scores2;
+
     private boolean isGameOver = false;
 
     @FXML
@@ -192,8 +194,7 @@ public class GameController {
 
                     var inverseDirection = PlayerDirection.of(inverseDirectionRowChange,inverseDirectionColChange);
 
-                    model.move(direction);
-                    model.moveBlue(inverseDirection);
+                    model.move(direction, inverseDirection);
 
                     deselectSelectedPosition();
                     alterSelectionPhase();
@@ -334,6 +335,8 @@ public class GameController {
 
         if(model.getDotPosition(0).equals(model.getDotPosition(1))) {
 
+
+            System.out.println(scores2);
 
             Logger.info("Congratulations, you won!");
             Logger.info("Name:"+playerName);

@@ -127,18 +127,20 @@ public class GameModel {
      * Moves the given dot according to the given direction.
      * @param direction .
      */
-    public void move(PlayerDirection direction) {
-        dots[0].moveTo(direction);
+    public void move(PlayerDirection redDirection, PlayerDirection blueDirection) {
+        dots[0].moveTo(redDirection);
+        dots[1].moveTo(blueDirection);
     }
 
     /**
      * Moves the blue dot according to the given direction.
      * @param direction .
      */
+    /*
     public void moveBlue(PlayerDirection direction) {
         dots[1].moveTo(direction);
     }
-
+*/
     /**
      * Returns a
      * @param position .

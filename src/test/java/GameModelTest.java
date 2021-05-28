@@ -63,36 +63,15 @@ public class GameModelTest {
 
     @Test
     void move() {
-        gameModel.move(PlayerDirection.DOWN);
+        gameModel.move(PlayerDirection.DOWN,PlayerDirection.UP);
         assertPosition(1,4, gameModel.getDotPosition(0));
-        assertPosition(6,2, gameModel.getDotPosition(1));
-        gameModel.move(PlayerDirection.RIGHT);
+        assertPosition(5,2, gameModel.getDotPosition(1));
+        gameModel.move(PlayerDirection.RIGHT,PlayerDirection.LEFT);
         assertPosition(1,5, gameModel.getDotPosition(0));
-        assertPosition(6,2, gameModel.getDotPosition(1));
-        gameModel.move(PlayerDirection.LEFT);
-        assertPosition(1,4, gameModel.getDotPosition(0));
-        assertPosition(6,2, gameModel.getDotPosition(1));
-        gameModel.move(PlayerDirection.UP);
-        assertPosition(0,4, gameModel.getDotPosition(0));
-        assertPosition(6,2, gameModel.getDotPosition(1));
+        assertPosition(5,1, gameModel.getDotPosition(1));
 
     }
 
-    @Test
-    void moveBlue() {
-        gameModel.moveBlue(PlayerDirection.UP);
-        assertPosition(5,2, gameModel.getDotPosition(1));
-        assertPosition(0,4, gameModel.getDotPosition(0));
-        gameModel.moveBlue(PlayerDirection.RIGHT);
-        assertPosition(5,3, gameModel.getDotPosition(1));
-        assertPosition(0,4, gameModel.getDotPosition(0));
-        gameModel.moveBlue(PlayerDirection.LEFT);
-        assertPosition(5,2, gameModel.getDotPosition(1));
-        assertPosition(0,4, gameModel.getDotPosition(0));
-        gameModel.moveBlue(PlayerDirection.DOWN);
-        assertPosition(6,2, gameModel.getDotPosition(1));
-        assertPosition(0,4, gameModel.getDotPosition(0));
-    }
 
     @Test
     void isValidMove() {
