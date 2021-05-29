@@ -80,14 +80,16 @@ public class GameController {
 
     @FXML
     private void handleGameOverButton(ActionEvent event) throws IOException {
-        /*
+
         FXMLLoader fxmlLoader = new FXMLLoader(GameApplication.class.getResource("/Initial.fxml"));
         Parent root = fxmlLoader.load();
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(root));
         stage.show();
-         */
+
+        /*
         System.exit(0);
+         */
     }
 
 
